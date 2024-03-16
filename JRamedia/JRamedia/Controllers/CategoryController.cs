@@ -42,6 +42,42 @@ namespace JRamedia.Controllers
             return View(obj);
         }
 
+        //post
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "The Name can't be the same with display order");
+            }
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+                
+            }
+            return View(obj);
+        }
+        
+        public IActionResult Edit(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var categoryFromDB = _db.Categories.Find(id);
+            //var categoryFromDBFirst = _db.Categories.FirstOrDefault(u=>u.Id == id);
+            //var categoryFromDBSingle = _db.Categories.SingleOrDefault(u=>u.Id == id);
+            if(categoryFromDB == null)
+            {
+                return NotFound();
+            }
+            return View(categoryFromDB);
+        } 
+       
+
 
     }
 }
