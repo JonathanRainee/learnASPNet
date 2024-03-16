@@ -36,6 +36,7 @@ namespace JRamedia.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
                 
             }
@@ -55,6 +56,7 @@ namespace JRamedia.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
                 
             }
@@ -62,6 +64,37 @@ namespace JRamedia.Controllers
         }
         
         public IActionResult Edit(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var categoryFromDB = _db.Categories.Find(id);
+            //var categoryFromDBFirst = _db.Categories.FirstOrDefault(u=>u.Id == id);
+            //var categoryFromDBSingle = _db.Categories.SingleOrDefault(u=>u.Id == id);
+            if(categoryFromDB == null)
+            {
+                return NotFound();
+            }
+            return View(categoryFromDB);
+        } 
+        [HttpPost, ActionName("Delete")]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult DeleteCategory(int? id)
+
+        {
+            var obj = _db.Categories.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+           _db.Categories.Remove(obj);
+            _db.SaveChanges();
+            TempData["success"] = "Category deleted successfully";
+            return RedirectToAction("Index");
+        }
+        
+        public IActionResult Delete(int? id)
         {
             if(id == null || id == 0)
             {
