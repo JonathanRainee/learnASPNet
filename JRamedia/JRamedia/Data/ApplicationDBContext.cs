@@ -14,5 +14,7 @@ namespace JRamedia.Data
 
         //bikin table
         public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Book> Books { get; set; }
     }
 }
