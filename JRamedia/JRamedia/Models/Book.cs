@@ -5,7 +5,7 @@ namespace JRamedia.Models
 {
     public class Book
     {
-        [Key]
+        [System.ComponentModel.DataAnnotations.Key]
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
