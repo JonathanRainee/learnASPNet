@@ -65,11 +65,41 @@ namespace JRamedia.Controllers
             if(ModelState.IsValid) { 
                 _db.Books.Update(book);
                 _db.SaveChanges();
+                TempData["success"] = "Book updated successfully";
                 return RedirectToAction("Index");
             }
 
 
             return View(book);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var book = _db.Books.Find(id);
+            if(book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Delete(int? id)
+        {
+            var book = _db.Books.Find(id);
+            if(book == null)
+            {
+                return NotFound();
+            }
+            _db.Books.Remove(book);
+            _db.SaveChanges();
+            TempData["success"] = "Book Deleted successfully";
+            return RedirectToAction("Index");
         }
     }
 }
