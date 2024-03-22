@@ -73,7 +73,7 @@ namespace JRamedia.Controllers
             return View(book);
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int? id)
         {
             if(id == null || id == 0)
             {
@@ -89,7 +89,7 @@ namespace JRamedia.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Delete(int? id)
+        public IActionResult DeleteBook(int? id)
         {
             var book = _db.Books.Find(id);
             if(book == null)
