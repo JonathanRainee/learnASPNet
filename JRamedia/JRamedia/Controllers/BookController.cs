@@ -16,18 +16,21 @@ namespace JRamedia.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<Book> books = _db.Books;
+            IEnumerable<Books> books = _db.Books;
             return View(books);
         }
 
         public IActionResult Create()
         {
-            return View();
+            IEnumerable<Category> categories = _db.Categories;
+            Books book = new Books();
+            return View(Tuple.Create(book, categories));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Book obj) {
+        public IActionResult Create(Books obj) {
+            IEnumerable<Category> categories = _db.Categories;
             if (obj.Title.Length < 5)
             {
                 ModelState.AddModelError("Title", "The title length can't be less than 5 characters");
@@ -39,7 +42,7 @@ namespace JRamedia.Controllers
                 TempData["success"] = "Book Added Successfuly";
                 return RedirectToAction("Index");
             }
-            return View(obj);
+            return View(Tuple.Create(obj, categories));
         }
 
         public IActionResult Update(int? id)
@@ -57,7 +60,7 @@ namespace JRamedia.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Update(Book book) { 
+        public IActionResult Update(Books book) { 
         
             if (book.Title.Length < 5) {
                 ModelState.AddModelError("Title", "Title length can't be less than 5 characters");

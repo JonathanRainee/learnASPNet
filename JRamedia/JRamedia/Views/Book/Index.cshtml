@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Book>
+﻿@model IEnumerable<Books>
 @{
     ViewData["Title"] = "Index";
 }
@@ -48,8 +48,8 @@
                     <td width="20%" class="allign-middle">
                         @obj.Title
                     </td> 
-                    <td width="5%">
-                        genre
+                    <td width="8%">
+                        @obj.Genre
                     </td>
                     <td width="20%">
                         @obj.Description

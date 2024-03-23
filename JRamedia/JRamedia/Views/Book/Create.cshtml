@@ -1,4 +1,4 @@
-﻿@model Book
+﻿@model Tuple<Books,IEnumerable<Category>>
 
 <form method="post">
     <div class="border p-3 mt-4">
@@ -9,24 +9,34 @@
         </div>
         <div asp-validation-summary="All"></div>
         <div class="mb-3">
-            <label asp-for="Title">Title</label>
-            <input asp-for="Title" type="text" name="Title" value="" class="form-control"/>
-            <span asp-validation-for="Title" class="text-danger"></span>
+            <label asp-for="Item1.Title">Title</label>
+            <input asp-for="Item1.Title" type="text" name="Title" value="" class="form-control" />
+            <span asp-validation-for="Item1.Title" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Description">Description</label>
-            <input asp-for="Description" type="text" name="Description" value="" class="form-control" />
-            <span asp-validation-for="Description" class="text-danger"></span>
+            <label asp-for="Item1.Genre">Genre</label>
+            <select asp-for="Item1.Genre" type="" name="Genre" value="" class="form-control">
+                @foreach(var obj in Model.Item2)
+                {
+                    <option value="@obj.Name">@obj.Name</option>
+                }
+            </select>
+            <span asp-validation-for="Item1.Genre" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Author">Author</label>
-            <input asp-for="Author" type="text" name="Author" value="" class="form-control" />
-            <span asp-validation-for="Author" class="text-danger"></span>
+            <label asp-for="Item1.Description">Description</label>
+            <input asp-for="Item1.Description" type="text" name="Description" value="" class="form-control" />
+            <span asp-validation-for="Item1.Description" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Price">Price</label>
-            <input asp-for="Price" type="number" name="Price" value="" class="form-control" />
-            <span asp-validation-for="Price" class="text-danger"></span>
+            <label asp-for="Item1.Author">Author</label>
+            <input asp-for="Item1.Author" type="text" name="Author" value="" class="form-control" />
+            <span asp-validation-for="Item1.Author" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Item1.Price">Price</label>
+            <input asp-for="Item1.Price" type="number" name="Price" value="" class="form-control" />
+            <span asp-validation-for="Item1.Price" class="text-danger"></span>
         </div>
         <button class="btn btn-primary" type="submit">Add</button>
         <a asp-action="Index" asp-controller="Book" class="btn-secondary btn" style="width:150px">Back</a>
