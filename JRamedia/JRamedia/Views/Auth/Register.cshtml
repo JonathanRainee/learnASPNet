@@ -1,4 +1,5 @@
-﻿
+﻿@model User
+
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,26 +7,34 @@
 
 <div class="parent-container pt-4">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <form>
+        <form method="post">
             <div class="mb-3">
-                <label for="Username" class="form-label">Username</label>
-                <input type="email" class="form-control" id="Username" aria-describedby="emailHelp">
+                <label asp-for="Userame" for="Username" class="form-label">Username</label>
+                <input asp-for="Userame" type="name" class="form-control" id="Username" aria-describedby="emailHelp">
+                <span asp-validation-for="Userame" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label asp-for="Email" for="email" class="form-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label asp-for="Password" for="password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="mb-3 form-check">
+            @* <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">I Agree With the TnC Applied</label>
-            </div>
-            <p>Already have an account? <a asp-controller="Auth" asp-action="Login">Sign ip here!</a></p>
-            <button class="btn btn-primary w-100">Sign In</button>
+            </div> *@
+            <p>Already have an account? <a asp-controller="Auth" asp-action="Login">Sign In here!</a></p>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
         </form>
     </div>
 </div>
 
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

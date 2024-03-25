@@ -1,20 +1,22 @@
-﻿
+﻿@model User
 @{
     ViewData["Title"] = "Login";
 }
 <div class="parent-container pt-4">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <form>
+        <form method="post">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label asp-for="Email" for="Email" class="form-label">Email</label>
+                <input asp-for="Email" type=" Email" class="form-control" id="email" aria-describedby="emailHelp">
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label asp-for="Password" for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" id="password">
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <p>Dont have an account? <a asp-controller="Auth" asp-action="Register">Sign up here!</a></p>
-            <button class="btn btn-primary w-100">Sign In</button>
+            <p>Don't have an account? <a asp-controller="Auth" asp-action="Register">Sign up here!</a></p>
+            <button type="submit" class="btn btn-primary w-100">Sign In</button>
         </form>
     </div>
 </div>
