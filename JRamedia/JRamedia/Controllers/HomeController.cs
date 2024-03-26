@@ -1,6 +1,7 @@
 ﻿using JRamedia.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace JRamedia.Controllers
 {
@@ -15,7 +16,8 @@ namespace JRamedia.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var sessionUser = JsonSerializer.Deserialize<User>(HttpContext.Session.GetString("user"));
+            return View(sessionUser);
         }
 
         public IActionResult Privacy()

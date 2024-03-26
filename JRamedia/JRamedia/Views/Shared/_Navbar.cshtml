@@ -3,6 +3,7 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
+
 <header class="w-100">
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
@@ -31,7 +32,11 @@
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="search" placeholder="Search" style="width:180px">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-primary me-sm-2 my-sm-0" type="submit">Search</button>
+                    <button asp-controller="Auth" asp-action="Logout" class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+               @*  </form>
+                <form action="/Logout" method="post"> *@
+                
                 </form>
             </div>
         </div>

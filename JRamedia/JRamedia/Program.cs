@@ -13,6 +13,16 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlSer
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+builder.Services.AddSession(opt =>
+{
+    opt.IdleTimeout = TimeSpan.FromMinutes(1);
+});
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.Cookie.Name = "cookie";
+    opt.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+    opt.SlidingExpiration = true;
+});
 
 var app = builder.Build();
 
@@ -29,6 +39,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthentication();;
+app.UseSession();
 
 app.UseAuthorization();
 

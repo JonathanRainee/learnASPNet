@@ -1,8 +1,11 @@
 ﻿using JRamedia.Data;
 using JRamedia.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Policy;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace JRamedia.Controllers
 {
@@ -37,12 +40,26 @@ namespace JRamedia.Controllers
                 ModelState.AddModelError("Password", "Please input the right credential!");
                 return View(user);
             }
-            foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            var userObj = JsonSerializer.Serialize(obj);
+            HttpContext.Session.SetString("user", userObj);
+
+            var cookie = new CookieOptions
             {
-                System.Diagnostics.Debug.WriteLine($"ModelState Error: {error.ErrorMessage}");
-            }
-            System.Diagnostics.Debug.WriteLine("haha");
+                Expires = DateTime.UtcNow.AddSeconds(10),
+                HttpOnly = true
+            };
+            Response.Cookies.Append("cookie", userObj, cookie);
             return Redirect("/home/index");
+
+            //if (Request.Cookies.ContainsKey("cookie"))
+            //{
+            //    return Redirect("/home/index");
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("Password", "Can't create cookie!");
+            //    return View(user);
+            //}
         }
 
         public IActionResult Register()
@@ -78,6 +95,15 @@ namespace JRamedia.Controllers
                 return RedirectToAction("Login");
             }
             return View(user);
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            Response.Headers["Cache-Control"] = "no-cache, no-store";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "-1";
+            return View("Login");
         }
     }
 }
