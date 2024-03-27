@@ -1,5 +1,6 @@
 using JRamedia.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
 
@@ -8,6 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(opt => {
+    opt.LoginPath = "/Auth/Login";
+    opt.ExpireTimeSpan = TimeSpan.FromMinutes(15);
+});
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
@@ -38,7 +43,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication();;
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseSession();
 
 app.UseAuthorization();

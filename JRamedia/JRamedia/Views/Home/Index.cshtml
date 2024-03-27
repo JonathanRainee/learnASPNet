@@ -8,5 +8,6 @@
 <div class="text-center w-100">
     @Html.Partial("~/Views/Shared/_Navbar.cshtml")
     <h1 class="display-4">Welcome @Model.Userame</h1>
+    <a asp-controller="Home" asp-action="Logout">logout</a>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

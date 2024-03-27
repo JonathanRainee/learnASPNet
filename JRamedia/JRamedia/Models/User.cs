@@ -13,5 +13,7 @@ namespace JRamedia.Models
         [Required(ErrorMessage = "The Password field is required.")]
         public string Password { get; set; }
 
+        public bool KeepLoggedIn { get; set; }
+
     }
 }

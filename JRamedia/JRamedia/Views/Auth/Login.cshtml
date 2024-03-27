@@ -4,7 +4,7 @@
 }
 <div class="parent-container pt-4">
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <form method="post">
+        <form method="post" asp-controller="Auth" asp-action="Login">
             <div class="mb-3">
                 <label asp-for="Email" for="Email" class="form-label">Email</label>
                 <input asp-for="Email" type=" Email" class="form-control" id="email" aria-describedby="emailHelp">
@@ -14,6 +14,10 @@
                 <label asp-for="Password" for="Password" class="form-label">Password</label>
                 <input asp-for="Password" type="password" class="form-control" id="password">
                 <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" asp-for="KeepLoggedIn" class="form-check-input" id="KeepLoggedIn">
+                <label class="form-check-label" for="KeepLoggedIn">Keep me logged in</label>
             </div>
             <p>Don't have an account? <a asp-controller="Auth" asp-action="Register">Sign up here!</a></p>
             <button type="submit" class="btn btn-primary w-100">Sign In</button>

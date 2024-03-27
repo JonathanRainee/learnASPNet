@@ -1,6 +1,10 @@
 ﻿using JRamedia.Data;
 using JRamedia.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using JRamedia.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Policy;
@@ -20,12 +24,15 @@ namespace JRamedia.Controllers
         //GET: Auth/Login
         public IActionResult Login()
         {
+            ClaimsPrincipal claimUser = HttpContext.User;
+            if (claimUser.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
+
             return View();
         }
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Login(User user)
+        public async Task<IActionResult> Login(User user)
         {
             User objByUsername = _db.Users.FirstOrDefault(u => user.Email == u.Email);
             if (objByUsername == null)
@@ -40,6 +47,23 @@ namespace JRamedia.Controllers
                 ModelState.AddModelError("Password", "Please input the right credential!");
                 return View(user);
             }
+
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim("email", objByUsername.Email),
+                new Claim("username", objByUsername.Userame),
+                new Claim("id", objByUsername.Id.ToString())
+            };
+
+            ClaimsIdentity identity = new ClaimsIdentity(claims,
+                CookieAuthenticationDefaults.AuthenticationScheme  
+            );
+
+            AuthenticationProperties properties = new AuthenticationProperties()
+            {
+                AllowRefresh = true,
+                IsPersistent = user.KeepLoggedIn,
+            };
             var userObj = JsonSerializer.Serialize(obj);
             HttpContext.Session.SetString("user", userObj);
 
@@ -49,7 +73,12 @@ namespace JRamedia.Controllers
                 HttpOnly = true
             };
             Response.Cookies.Append("cookie", userObj, cookie);
-            return Redirect("/home/index");
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
+                new ClaimsPrincipal(identity),
+                properties
+            );
+            return RedirectToAction("Index", "Home");
+            //return Redirect("/home/index");
 
             //if (Request.Cookies.ContainsKey("cookie"))
             //{
