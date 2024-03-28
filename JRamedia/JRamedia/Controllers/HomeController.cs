@@ -20,8 +20,7 @@ namespace JRamedia.Controllers
 
         public IActionResult Index()
         {
-            var sessionUser = JsonSerializer.Deserialize<User>(HttpContext.Session.GetString("user"));
-            return View(sessionUser);
+            return View();
         }
 
         public IActionResult Privacy()

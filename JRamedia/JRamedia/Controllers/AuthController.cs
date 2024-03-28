@@ -79,16 +79,6 @@ namespace JRamedia.Controllers
             );
             return RedirectToAction("Index", "Home");
             //return Redirect("/home/index");
-
-            //if (Request.Cookies.ContainsKey("cookie"))
-            //{
-            //    return Redirect("/home/index");
-            //}
-            //else
-            //{
-            //    ModelState.AddModelError("Password", "Can't create cookie!");
-            //    return View(user);
-            //}
         }
 
         public IActionResult Register()

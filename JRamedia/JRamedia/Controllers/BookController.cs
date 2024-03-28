@@ -2,10 +2,14 @@
 using JRamedia.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Permissions;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using static System.Collections.Specialized.BitVector32;
 
 namespace JRamedia.Controllers
 {
+    [Authorize]
     public class BookController : Controller
     {
         private readonly ApplicationDBContext _db;

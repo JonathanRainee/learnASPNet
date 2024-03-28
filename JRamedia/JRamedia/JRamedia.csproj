@@ -24,7 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\" />
     <Folder Include="Views\Component\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\blulok.jpg" />
   </ItemGroup>
 
 </Project>

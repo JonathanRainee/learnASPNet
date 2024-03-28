@@ -1,9 +1,14 @@
 ﻿using JRamedia.Data;
 using JRamedia.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JRamedia.Controllers
 {
+
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ApplicationDBContext _db;
