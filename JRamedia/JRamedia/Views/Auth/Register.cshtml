@@ -10,17 +10,17 @@
         <form method="post">
             <div class="mb-3">
                 <label asp-for="Userame" for="Username" class="form-label">Username</label>
-                <input asp-for="Userame" type="name" class="form-control" id="Username" aria-describedby="emailHelp">
+                <input asp-for="Userame" type="name" class="form-control tb" id="Username" aria-describedby="emailHelp">
                 <span asp-validation-for="Userame" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="Email" for="email" class="form-label">Email</label>
-                <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input asp-for="Email" type="email" class="form-control tb" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="Password" for="password" class="form-label">Password</label>
-                <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
+                <input asp-for="Password" type="password" class="form-control tb" id="exampleInputPassword1">
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             @* <div class="mb-3 form-check">
@@ -28,7 +28,7 @@
                 <label class="form-check-label" for="exampleCheck1">I Agree With the TnC Applied</label>
             </div> *@
             <p>Already have an account? <a asp-controller="Auth" asp-action="Login">Sign In here!</a></p>
-            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            <button type="submit" class="btn btn-primary btn-prim w-100">Sign Up</button>
         </form>
     </div>
 </div>
