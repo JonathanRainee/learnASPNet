@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="containe w-100r">
+    <div class="container w-100r">
         <main role="main" class="pb-3 w-100">
 
             <partial name="_Notification"></partial>
@@ -20,8 +20,57 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - JRamedia - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="py-5 px-5" name="footer-top" style="background-color: #BED7DC;">
+            <div class=" row d-flex">
+                <div class="col justify-content-center px-5">
+                    <h2 class="text-primary display-6 text-center">Special offer from us just for you</h2>
+                </div>
+                <div class="col">
+                    <div class="input-group input-group-lg">
+                        <input style="background-color: white;" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                      <button class="input-group-text text-primary" id="inputGroup-sizing-lg">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-mid" style="text-align: start;" class="py-5 container">
+            <ul style="list-style-type: none; padding: 0; margin: 0; display: flex; justify-content: space-between;">
+                <li style="vertical-align: top;">
+                    <h3>JRamedia Product</h3>
+                    <a href="#" style="display: block; text-decoration: none;">JRamedia Affiliate</a>
+                    <a href="#" style="display: block; text-decoration: none;">JRamedia Partner</a>
+                </li>
+                <li style="vertical-align: top;">
+                    <h3>Shopping</h3>
+                    <a href="#" style="display: block; text-decoration: none;">Shop</a>
+                    <a href="#" style="display: block; text-decoration: none;">Payment</a>
+                    <a href="#" style="display: block; text-decoration: none;">Shipping</a>
+                </li>
+                <li style="vertical-align: top;">
+                    <h3>About JRamedia</h3>
+                    <a href="#" style="display: block; text-decoration: none;">About Us</a>
+                    <a href="#" style="display: block; text-decoration: none;">Our Store</a>
+                    <a href="#" style="display: block; text-decoration: none;">Partnership</a>
+                </li>
+                <li style="vertical-align: top;">
+                    <h3>Others</h3>
+                    <a href="#" style="display: block; text-decoration: none;">Terms and Condition</a>
+                    <a href="#" style="display: block; text-decoration: none;">Privacy and Policy</a>
+                    <a href="#" style="display: block; text-decoration: none;">Helps</a>
+                    <a href="#" style="display: block; text-decoration: none;">Contact US</a>
+                </li>
+                <li style="vertical-align: top;">
+                    <h3>Mobile Application</h3>
+                    <div>
+                        <p>Download <b>JRamedia</b> application on iOS and Android device</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div name="footer-bot py-5">
+            <div class="text-center">
+                <h2>Biggest one stop book store in Indonesia</h2>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

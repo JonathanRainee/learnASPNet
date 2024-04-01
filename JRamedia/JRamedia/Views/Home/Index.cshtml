@@ -3,36 +3,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-
 @Html.Partial("~/Views/Shared/_Navbar.cshtml")
 <div class="w-100 p-4">
 
 
-    <div class="container mt-12">
+    <div class=" mt-12">
         <div class="row justify-content-center pb-5">
             <div class="col-7">
                 <div id="carouselId" class="carousel slide" data-bs-ride="carousel" style="max-width: 800px;">
-                    <ol class="carousel-indicators">
+                    <ol class="carousel-indicators" style="list-style-type: none; padding: 0; margin: 0;">
                         <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
                         <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
                         <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
                     </ol>
-                    <div class="carousel-inner rounded" role="listbox">
-                        <div class="carousel-item active">
-                            <img src="~/images/blulok.jpg" class="w-100 h-100 d-block" alt="blu lok" style="max-height: 425px;" />
+                    <div class="carousel-inner rounded" role="listbox" style="overflow: hidden;">
+                        <div class="carousel-item active" style="transition: transform 0.6s ease;">
+                            <img src="~/images/blulok.jpg" class="w-100 h-100 d-block" alt="blu lok" style="max-height: 425px; min-height: 425px;" />
                         </div>
-                        <div class="carousel-item">
-                            <img src="~/images/_bsd.jpg" class="w-100 h-100 d-block" alt="Second slide" style="max-height: 425px;" />
+                        <div class="carousel-item" style="transition: transform 0.6s ease;">
+                            <img src="~/images/_bsd.jpg" class="w-100 h-100 d-block" alt="Second slide" style="max-height: 425px; min-height: 425px;" />
                         </div>
-                        <div class="carousel-item">
-                            <img src="~/images/kgy.jpg" class="w-100 h-100 d-block" alt="Third slide" style="max-height: 425px;" />
+                        <div class="carousel-item" style="transition: transform 0.6s ease;">
+                            <img src="~/images/kgy.jpg" class="w-100 h-100 d-block" alt="Third slide" style="max-height: 425px; min-height: 425px;" />
                         </div>
                     </div>
-                    <button class="carousel-control-prev type="button data-bs-target=" #carouselId" data-bs-slide="prev">
+                    <button class="carousel-control-prev type="button" data-bs-target="#carouselId" data-bs-slide="prev" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%);">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </button>
-                    <button class="carousel-control-next type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                    <button class="carousel-control-next type="button" data-bs-target="#carouselId" data-bs-slide="next" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     </button>
                 </div>
