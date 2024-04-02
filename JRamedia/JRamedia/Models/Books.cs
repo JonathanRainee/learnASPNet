@@ -18,5 +18,9 @@ namespace JRamedia.Models
         public string Author { get; set; }
         [Required]
         public int Price { get; set; }
+
+        public string Image {  get; set; }
+
+        public int BoughtTimes { get; set; }
     }
 }

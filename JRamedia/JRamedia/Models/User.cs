@@ -15,5 +15,8 @@ namespace JRamedia.Models
 
         public bool KeepLoggedIn { get; set; }
 
+        [Required]
+        public string Role { get; set; }
+
     }
 }
