@@ -1,25 +1,34 @@
 ﻿:root {
-    --primary: #7AA2E3;
-    --primary2: #86a2cf;
+    --primary: #008DDA;
+    --primary2: #3fa2d9;
     --secondary: #6AD4DD;
     --secondary2: #63bac2;
     --accent: #97E7E1;
+    --accent2: #7AA2E3;
     --main: #F8F6E3;
+    --white: #ffffff;
+    --black: #1F2937;
+    --text: #6B7280;
+    --red: #D80032;
+    --red2: #C70039;
 }
 
 
 body {
-    background-color: var(--main);
+    background-color: var(--white);
 }
 
 
-h1, h2, h3 {
-    color: #7AA2E3;
+
+
+h1, h2, h3, h4, h5, h6 p {
+    color: var(--text);
 }
 
 
-a{
+a {
     text-decoration: none;
+    color: var(--text);
 }
 
 
@@ -29,25 +38,26 @@ a{
 .btn-prim {
     background-color: var(--primary);
     border-color: var(--primary);
-    color: black;
-}
+    color: var(--white);
+    transition: background-color 0.3s ease-in-out;
+}   
 
     .btn-prim:active {
         background-color: var(--primary2);
-        border-color: #97E7E1;
-        color: black;
+        border-color: var(--primary2);
+        color: var(--white);
     }
 
     .btn-prim:focus {
         background-color: var(--primary2);
-        border-color: #97E7E1;
-        color: black;
+        border-color: var(--primary2);
+        color: var(--white);
     }
 
     .btn-prim:hover {
         background-color: var(--primary2);
-        border-color: #97E7E1;
-        color: black;
+        border-color: var(--primary2);
+        color: var(--white);
     }
 
 
@@ -79,6 +89,7 @@ a{
 .tb {
     background-color: #ffffff;
     color: #073642;
+    border-color: var(--black);
 }
 
     .tb:focus {
@@ -96,11 +107,8 @@ a{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: #97E7E1;
+    background-color: var(--primary);
     background-image: var(--bs-form-check-bg-image);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
     border: 1px solid #fff;
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
@@ -110,9 +118,23 @@ a{
 /*input start*/
 
 /*navbar*/
-.nb{
-    background-color: var(--primary);
+.nb {
+    background-color: var(--white);
 }
+
+.inp-nb{
+    border-color: var(--black);
+    border-width: 0.15px;
+}
+
+.btn-lo {
+    background-color: var(--red);
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .btn-lo:hover {
+        background-color: var(--red2);
+    }
 
 /*navbar end*/
 
@@ -158,6 +180,10 @@ a{
 
 
 /*card start*/
+
+.price{
+    color: var(--accent2);
+}
 
 .prod-otr-ctr {
     max-width: 175px;
@@ -205,3 +231,18 @@ a{
 }
 
 /*card end*/
+
+
+/*footer start*/
+
+.inp-ftr{
+    background-color: var(--white);
+    border-color: var(--white);
+}
+
+.btn-ftr{
+    color:var(--white);
+
+}
+
+/*footer end*/
