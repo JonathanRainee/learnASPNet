@@ -25,6 +25,7 @@ namespace JRamedia.Controllers
         public IActionResult Login()
         {
             ClaimsPrincipal claimUser = HttpContext.User;
+            ViewBag.UserObj = HttpContext.User;
             if (claimUser.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
 
             return View();
@@ -62,23 +63,38 @@ namespace JRamedia.Controllers
             AuthenticationProperties properties = new AuthenticationProperties()
             {
                 AllowRefresh = true,
-                IsPersistent = user.KeepLoggedIn,
+                IsPersistent = true,
+                ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
             };
+
             var userObj = JsonSerializer.Serialize(obj);
             HttpContext.Session.SetString("user", userObj);
 
+
             var cookie = new CookieOptions
             {
-                Expires = DateTime.UtcNow.AddSeconds(10),
+                Expires = DateTime.UtcNow.AddMinutes(30),
                 HttpOnly = true
             };
+
             Response.Cookies.Append("cookie", userObj, cookie);
+
+
+
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
                 new ClaimsPrincipal(identity),
                 properties
             );
-            return RedirectToAction("Index", "Home");
-            //return Redirect("/home/index");
+
+            
+
+            if(obj != null)
+            {
+                User usr = obj;
+                System.Diagnostics.Debug.WriteLine("haha" + usr.Role);
+                ViewBag.user = usr;
+            }
+            return RedirectToAction("Index", "Home", obj);
         }
 
         public IActionResult Register()
@@ -122,6 +138,7 @@ namespace JRamedia.Controllers
             Response.Headers["Cache-Control"] = "no-cache, no-store";
             Response.Headers["Pragma"] = "no-cache";
             Response.Headers["Expires"] = "-1";
+            ViewBag.user = null;
             return View("Login");
         }
     }

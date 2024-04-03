@@ -4,6 +4,8 @@ namespace JRamedia.Models
 {
     public class User
     {
+
+
         [Key]
         public int Id { get; set; }
         public string Userame { get; set; }
@@ -19,4 +21,5 @@ namespace JRamedia.Models
         public string Role { get; set; }
 
     }
+
 }
