@@ -1,74 +1,33 @@
 ﻿@model IEnumerable<Books>
+@using JRamedia.Models
 @{
     ViewData["Title"] = "Index";
 }
 @Html.Partial("~/Views/Shared/_Navbar.cshtml")
-<div class="container p-3">
+<div class="container">
     <div class="row pt-4">
         <div class="col-6">
             <h2 class="text-primary">Book List</h2>
         </div>
-        <div class="col-6 text-end">
-            <a asp-controller="Book" asp-action="Create" class="btn btn-primary">Add Book</a>
-        </div>
+
+        @if(CurrUser.Role == "admin")
+        {
+            <div class="col-6 text-end">
+                <a asp-controller="Book" asp-action="Create" class="btn btn-prim">Add Book</a>
+            </div>
+        }
     </div>
     <br />
     <br />
-    
-    <table class="table table-bordered table-striped text-center" style="width:100%">
-        <thead>
-            <tr>
-                <th>
-                    Title
-                </th>
-                <th>
-                    Genre
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Author
-                </th>
-                <th>
-                    Price
-                </th>
-                <th>
-                    
-                </th>
-                <th>
-                    
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var obj in Model)
-            {
-                <tr>
-                    <td width="20%" class="allign-middle">
-                        @obj.Title
-                    </td> 
-                    <td width="8%">
-                        @obj.Genre
-                    </td>
-                    <td width="20%">
-                        @obj.Description
-                    </td>
-                    <td width="20%">
-                        @obj.Author
-                    </td>
-                    <td width="5%">
-                        $@obj.Price
-                    </td>
-                    <td width="20%">
-                        <a asp-controller="Book" asp-action="Update" asp-route-id="@obj.Id" class="btn btn-primary">Update</a>
-                    </td>
-                    <td width="20%">
-                        <a asp-controller="Book" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="container text-center pb-4">
+        <div class="row">
+            <div class="row">
+                @foreach(var obj in Model)
+                {
+                    @Html.Partial("~/Views/Shared/_Book.cshtml", obj)
+                }
+            </div>
+        </div>
+    </div>
 </div>
 

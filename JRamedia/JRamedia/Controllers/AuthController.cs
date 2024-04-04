@@ -22,6 +22,7 @@ namespace JRamedia.Controllers
             _db = db;
         }
         //GET: Auth/Login
+
         public IActionResult Login()
         {
             ClaimsPrincipal claimUser = HttpContext.User;
@@ -49,6 +50,13 @@ namespace JRamedia.Controllers
                 return View(user);
             }
 
+            int id = objByUsername.Id;
+            string username = objByUsername.Userame;
+            string email = objByUsername.Email;
+            string role = objByUsername.Role;
+
+            CurrUser.setUser(id, username, email, role);
+
             List<Claim> claims = new List<Claim>()
             {
                 new Claim("email", objByUsername.Email),
@@ -56,9 +64,7 @@ namespace JRamedia.Controllers
                 new Claim("id", objByUsername.Id.ToString())
             };
 
-            ClaimsIdentity identity = new ClaimsIdentity(claims,
-                CookieAuthenticationDefaults.AuthenticationScheme  
-            );
+            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             AuthenticationProperties properties = new AuthenticationProperties()
             {
@@ -79,14 +85,10 @@ namespace JRamedia.Controllers
 
             Response.Cookies.Append("cookie", userObj, cookie);
 
-
-
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
                 new ClaimsPrincipal(identity),
                 properties
             );
-
-            
 
             if(obj != null)
             {
