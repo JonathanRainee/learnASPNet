@@ -1,47 +1,58 @@
 ﻿@model Tuple<Books,IEnumerable<Category>>
 
-<form method="post">
-    <div class="border p-3 mt-4">
+@Html.Partial("~/Views/Shared/_Navbar.cshtml")
+<div class="container pb-4">
 
-        <div class="row pb-4">
-            <h2 class="text-primary">Add Book</h2>
-            <hr />
-        </div>
-        <div asp-validation-summary="All"></div>
-        <div class="mb-3">
-            <label asp-for="Item1.Title">Title</label>
-            <input asp-for="Item1.Title" type="text" name="Title" value="" class="form-control" />
-            <span asp-validation-for="Item1.Title" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Item1.Genre">Genre</label>
-            <select asp-for="Item1.Genre" type="" name="Genre" value="" class="form-control">
-                @foreach(var obj in Model.Item2)
-                {
-                    <option value="@obj.Name">@obj.Name</option>
-                }
-            </select>
-            <span asp-validation-for="Item1.Genre" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Item1.Description">Description</label>
-            <input asp-for="Item1.Description" type="text" name="Description" value="" class="form-control" />
-            <span asp-validation-for="Item1.Description" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Item1.Author">Author</label>
-            <input asp-for="Item1.Author" type="text" name="Author" value="" class="form-control" />
-            <span asp-validation-for="Item1.Author" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Item1.Price">Price</label>
-            <input asp-for="Item1.Price" type="number" name="Price" value="" class="form-control" />
-            <span asp-validation-for="Item1.Price" class="text-danger"></span>
-        </div>
-        <button class="btn btn-primary" type="submit">Add</button>
-        <a asp-action="Index" asp-controller="Book" class="btn-secondary btn" style="width:150px">Back</a>
+    <div class="row pt-4">
+        <h2 class="text-primary pt-4">Add Book</h2>
+        <hr />
     </div>
-</form>
+    <form method="post" class="pb-4">
+        <div class="border p-3 mt-4">
+
+            <div asp-validation-summary="All"></div>
+            <div class="mb-3">
+                <label asp-for="Item1.Title">Title</label>
+                <input asp-for="Item1.Title" type="text" name="Title" value="" class="form-control tb" />
+                <span asp-validation-for="Item1.Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Item1.Genre">Genre</label>
+                <select asp-for="Item1.Genre" type="" name="Genre" value="" class="form-control tb">
+                    @foreach(var obj in Model.Item2)
+                    {
+                        <option class="" value="@obj.Name">@obj.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Item1.Genre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Item1.Description">Description</label>
+                <input asp-for="Item1.Description" type="text" name="Description" value="" class="form-control tb" />
+                <span asp-validation-for="Item1.Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Item1.Author">Author</label>
+                <input asp-for="Item1.Author" type="text" name="Author" value="" class="form-control tb" />
+                <span asp-validation-for="Item1.Author" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Item1.Price">Price</label>
+                <input asp-for="Item1.Price" type="number" name="Price" value="" class="form-control tb" />
+                <span asp-validation-for="Item1.Price" class="text-danger"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Item1.Image">Image</label>
+                <input asp-for="Item1.Image" type="file" name="Image" value="" class="form-control tb inp-file" />
+                <span asp-validation-for="Item1.Image" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-prim" type="submit">Add</button>
+                <a asp-action="Index" asp-controller="Book" class="btn-secondary btn" style="width:150px">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     @{

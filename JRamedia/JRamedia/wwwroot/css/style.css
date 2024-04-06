@@ -115,6 +115,15 @@ a {
     print-color-adjust: exact;
 }
 
+.inp-file {
+    color: var(--text); 
+    border-color: var(--primary);
+}
+
+    .inp-file:hover {
+        backgreound-color: var(--primary2);
+    }
+
 /*input start*/
 
 /*navbar*/
