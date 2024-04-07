@@ -4,20 +4,20 @@
     ViewData["Title"] = "Index";
 }
 @Html.Partial("~/Views/Shared/_Navbar.cshtml")
-<div class="container">
+<div class="container p-3">
     <div class="row pt-4">
-        <div class="col-6">
+        <div class="col-6 pb-1">
             <h2 class="text-primary">Book List</h2>
         </div>
-
         @if(CurrUser.Role == "admin")
         {
             <div class="col-6 text-end">
                 <a asp-controller="Book" asp-action="Create" class="btn btn-prim">Add Book</a>
             </div>
         }
+        <hr  />
+
     </div>
-    <br />
     <br />
     <div class="container text-center pb-4">
         <div class="row">

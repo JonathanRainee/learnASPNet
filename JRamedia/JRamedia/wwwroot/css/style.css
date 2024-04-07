@@ -19,9 +19,7 @@ body {
 }
 
 
-
-
-h1, h2, h3, h4, h5, h6 p {
+h1, h2, h3, h4, h5, h6, p {
     color: var(--text);
 }
 
@@ -255,3 +253,15 @@ a {
 }
 
 /*footer end*/
+
+
+/*category start*/
+
+.category {
+    color: var(--white);
+    background: rgb(91,126,213);
+    background: linear-gradient(90deg, rgba(91,126,213,1) 0%, rgba(94,190,199,1) 50%, rgba(255,255,255,1) 100%);
+    
+}
+
+/*category end*/
