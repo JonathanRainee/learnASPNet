@@ -1,13 +1,16 @@
 ﻿@model Tuple<Books,IEnumerable<Category>>
 
 @Html.Partial("~/Views/Shared/_Navbar.cshtml")
+<script src="~/js/script.js">
+
+</script>
 <div class="container pb-4">
 
     <div class="row pt-4">
         <h2 class="text-primary pt-4">Add Book</h2>
         <hr />
     </div>
-    <form method="post" class="pb-4">
+    <form method="post" class="pb-4" enctype="multipart/form-data">
         <div class="border p-3 mt-4">
 
             <div asp-validation-summary="All"></div>
@@ -43,8 +46,9 @@
             </div>
             <div class="mb-4">
                 <label asp-for="Item1.Image">Image</label>
-                <input asp-for="Item1.Image" type="file" name="Image" value="" class="form-control tb inp-file" />
-                <span asp-validation-for="Item1.Image" class="text-danger"></span>
+                <input asp-for="Item1.Image" value="John" hidden />
+                <input asp-for="Item1.Image" type="file" name="Image" id="file" value="" class="form-control tb inp-file" />
+                <span asp-validation-for="Item1.Image" id="vld-image" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <button class="btn btn-prim" type="submit">Add</button>

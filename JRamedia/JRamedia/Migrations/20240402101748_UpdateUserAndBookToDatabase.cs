@@ -26,7 +26,7 @@ namespace JRamedia.Migrations
                 name: "Image",
                 table: "Books",
                 type: "nvarchar(max)",
-                nullable: false,
+                nullable: true,
                 defaultValue: "");
         }
 

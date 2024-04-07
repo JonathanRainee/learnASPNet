@@ -1,5 +1,6 @@
 ﻿using MessagePack;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace JRamedia.Models
 {
@@ -18,8 +19,7 @@ namespace JRamedia.Models
         public string Author { get; set; }
         [Required]
         public int Price { get; set; }
-
-        public string Image {  get; set; }
+        public string? Image {  get; set; }
 
         public int BoughtTimes { get; set; }
     }

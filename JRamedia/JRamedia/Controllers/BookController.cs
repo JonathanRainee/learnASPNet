@@ -6,15 +6,20 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using static System.Collections.Specialized.BitVector32;
+using Microsoft.AspNetCore.Hosting;
+using System;
+using System.IO;
 
 namespace JRamedia.Controllers
 {
     [Authorize]
     public class BookController : Controller
     {
+        private readonly IWebHostEnvironment _environment;
         private readonly ApplicationDBContext _db;
-        public BookController(ApplicationDBContext db)
+        public BookController(IWebHostEnvironment environment, ApplicationDBContext db)
         {
+            _environment = environment;
             _db = db;
 
         }
@@ -33,7 +38,7 @@ namespace JRamedia.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Books obj) {
+        public IActionResult Create(Books obj, IFormFile Image) {
             IEnumerable<Category> categories = _db.Categories;
             if (obj.Title.Length < 5)
             {
@@ -41,6 +46,16 @@ namespace JRamedia.Controllers
             }
             if (ModelState.IsValid)
             {
+                if (Image != null && Image.Length > 0)
+                {
+                    var imagePath = Path.Combine(_environment.WebRootPath, "images", Image.FileName);
+                    using (var stream = new FileStream(imagePath, FileMode.Create))
+                    {
+                        Image.CopyTo(stream);
+                    }
+                    obj.Image = Image.FileName;
+                }
+
                 _db.Books.Add(obj);
                 _db.SaveChanges();
                 TempData["success"] = "Book Added Successfuly";
