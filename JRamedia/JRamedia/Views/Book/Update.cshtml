@@ -1,37 +1,59 @@
-﻿@model Books
+﻿@model Tuple<Books,IEnumerable<Category>>
 
-<form method="post" asp-action="">
-    <div class="border p-3 mt-4">
-        <div class="row pb-2">
-            <h2 class="text-primary">Update Book</h2>
-            <hr />
-        </div>
-        <div asp-validation-summary="All">
+@Html.Partial("~/Views/Shared/_Navbar.cshtml")
+<script src="~/js/script.js">
 
-        </div>
+</script>
 
-        <div class="mb-3">
-            <label asp-for="Title">Title</label>
-            <input asp-for="Title" class="form-control"/>
-            <span class="text-danger" asp-validation-for="Title"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Description">Description</label>
-            <input asp-for="Description" class="form-control" />
-            <span class="text-danger" asp-validation-for="Description"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Author">Author</label>
-            <input asp-for="Author" class="form-control" />
-            <span class="text-danger" asp-validation-for="Author"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Price">Price</label>
-            <input asp-for="Price" class="form-control" />
-            <span class="text-danger" asp-validation-for="Price"></span>
-        </div>
-        <button asp-controller="Book" asp-action="Update" type="submit" class="btn btn-primary">Submit</button>
-        <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">Back</a>
+<div class="container pb-4">
+    <div class="row pt-4">
+        <h2 class="text-primary pt-4">Update Book</h2>
+        <hr />
     </div>
+    <form method="post" class="pb-4" enctype="multipart/form-data" asp-action="UpdateBook">
+        <input type="hidden" name="Id" value="@Model.Item1.Id" />
+        <div class="border p-3 mt-4">
 
-</form>
+            <div asp-validation-summary="All"></div>
+            <div class="mb-3">
+                <label asp-for="Item1.Title">Title</label>
+                <input asp-for="Item1.Title" type="text" name="Title" value="@Model.Item1.Title" class="form-control tb" />
+                <span asp-validation-for="Item1.Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Item1.Genre">Genre</label>
+                <select asp-for="Item1.Genre" type="" name="Genre" value="@Model.Item1.Genre" class="form-control tb">
+                    @foreach (var obj in Model.Item2)
+                    {
+                        <option class="" value="@obj.Name">@obj.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="Item1.Genre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Item1.Description">Description</label>
+                <input asp-for="Item1.Description" type="text" name="Description" value="@Model.Item1.Description" class="form-control tb" />
+                <span asp-validation-for="Item1.Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Item1.Author">Author</label>
+                <input asp-for="Item1.Author" type="text" name="Author" value="@Model.Item1.Author" class="form-control tb" />
+                <span asp-validation-for="Item1.Author" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Item1.Price">Price</label>
+                <input asp-for="Item1.Price" type="number" name="Price" value="@Model.Item1.Price" class="form-control tb" />
+                <span asp-validation-for="Item1.Price" class="text-danger"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Item1.Image">Image</label>
+                <input asp-for="Item1.Image" type="file" name="Image" id="file" value="@Model.Item1.Image" class="form-control tb inp-file" />
+                <span asp-validation-for="Item1.Image" id="vld-image" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-prim" type="submit">Update</button>
+                <a asp-action="Index" asp-controller="Book" class="btn-secondary btn" style="width:150px">Back</a>
+            </div>
+        </div>
+    </form>
+</div>

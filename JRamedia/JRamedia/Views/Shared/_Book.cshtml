@@ -4,27 +4,27 @@
 
 @model Books
 
-<div class="col pb-4 pt-1">
-    <div class="d-flex shadow prod-otr-ctr prod-card  prod-card ">
-        <a href="#" class="text-decoration-none prod-inr-ctr ">
-            <div class="rounded-end prod-dsc-prctg">20%</div>
-            <div>
-                <img class="rounded prod-img" src="~/images/@Model.Image" alt="@Model.Title" />
-            </div>
-            <div class="p-2">
-                <div class="text-start">
-                    <div>
-                        <p class="prod-athr">@Model.Author</p>
-                        <p class="mt-1 prod-ttle">@Model.Title</p>
+    <div class="col pb-4 pt-1">
+        <div class="d-flex shadow prod-otr-ctr prod-card  prod-card ">
+            <a  class="text-decoration-none prod-inr-ctr" asp-action="Update" asp-controller="Book" asp-route-id="@Model.Id">
+                <div class="rounded-end prod-dsc-prctg">20%</div>
+                <div>
+                    <img class="rounded prod-img" src="~/images/@Model.Image" alt="@Model.Title" />
+                </div>
+                <div class="p-2">
+                    <div class="text-start">
+                        <div>
+                            <p class="prod-athr">@Model.Author</p>
+                            <p class="mt-1 prod-ttle">@Model.Title</p>
+                        </div>
+                    </div>
+                    <div class="text-start">
+                        <p class="h4 text-primary price">Rp @Model.Price.ToString()</p>
+                        <div>
+                            <p class="text-decoration-line-through fst-italic text-secondary">Rp @(Model.Price+10000)</p>
+                        </div>
                     </div>
                 </div>
-                <div class="text-start">
-                    <p class="h4 text-primary price">Rp @Model.Price.ToString()</p>
-                    <div>
-                        <p class="text-decoration-line-through fst-italic text-secondary">Rp @(Model.Price+10000)</p>
-                    </div>
-                </div>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
-</div>

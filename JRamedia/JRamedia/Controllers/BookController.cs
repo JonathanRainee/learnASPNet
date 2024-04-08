@@ -66,6 +66,7 @@ namespace JRamedia.Controllers
 
         public IActionResult Update(int? id)
         {
+            IEnumerable<Category> categories = _db.Categories;
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -74,24 +75,32 @@ namespace JRamedia.Controllers
             if(BookFromDB == null) { 
                 return NotFound();
             }
-            return View(BookFromDB);
+            return View(Tuple.Create(BookFromDB, categories));
         }
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Update(Books book) { 
-        
+        public IActionResult UpdateBook(Books book, IFormFile Image) {
+            IEnumerable<Category> categories = _db.Categories;
+
             if (book.Title.Length < 5) {
                 ModelState.AddModelError("Title", "Title length can't be less than 5 characters");
             }
-            if(ModelState.IsValid) { 
+            if(ModelState.IsValid) {
+                if (Image != null && Image.Length > 0)
+                {
+                    var imagePath = Path.Combine(_environment.WebRootPath, "images", Image.FileName);
+                    using (var stream = new FileStream(imagePath, FileMode.Create))
+                    {
+                        Image.CopyTo(stream);
+                    }
+                    book.Image = Image.FileName;
+                }
                 _db.Books.Update(book);
                 _db.SaveChanges();
                 TempData["success"] = "Book updated successfully";
                 return RedirectToAction("Index");
             }
-
-
             return View(book);
         }
 
