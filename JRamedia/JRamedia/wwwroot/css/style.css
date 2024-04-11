@@ -29,6 +29,14 @@ a {
     color: var(--text);
 }
 
+/*general start*/
+.center{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+/*general end*/
+
 
 
 
@@ -265,3 +273,25 @@ a {
 }
 
 /*category end*/
+
+/*details start*/
+.img-ctr-detail{
+    margin-right: 45px;
+}
+.img-detail {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.img-box {
+    width: 300px; /* Adjust width as needed */
+    height: 440px; /* Adjust height as needed */
+    padding: 15px; /* Add padding to create space for shadow */
+    box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* Spread shadow from div border */
+    -webkit-box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* For older versions of webkit browsers */
+    -moz-box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* For older versions of Firefox */
+}
+
+
+/*details start*/

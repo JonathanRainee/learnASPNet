@@ -1,5 +1,54 @@
-﻿@*
+﻿@model Books
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+
+@Html.Partial("~/Views/Shared/_Navbar.cshtml")
+
+<div class="container p-3">
+
+    <div class="row pt-5">
+        @* image *@
+        <div class="col-3 img-ctr-detail" >
+            <div class="m-3 rounded img-box">
+                <div class="center">
+                    <img class="img-detail" src="~/images/@Model.Image" alt="@Model.Title" />
+                </div>
+            </div>
+        </div>
+        @* text *@
+        <div class="col-6 mt-3">
+            <div>
+                <div class="author-dtl">
+                    <h4>@Model.Author</h4>
+                </div>
+                <div class="share-btn">
+                
+                </div>
+            </div>
+            <div class="title-dtl">
+                <h4>@Model.Title</h4>
+            </div>
+            <div class="bar-dtl row">
+                <a href="#">Choose Book Format</a>
+                <a href="#">Book's Description</a>
+                <a href="#">Book's Detail'</a>
+            </div>
+            <div class="format-dtl">
+                <p>Choose Provided Book's Format</p>
+            </div>
+            <div class="desc-dtl">
+                @Model.Description
+            </div>
+            <div class="detail-dtl">
+
+            </div>
+        </di>
+        @* other *@
+        <div class="col-3">
+
+        </div>
+    </div>
+</div>

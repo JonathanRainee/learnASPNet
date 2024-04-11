@@ -64,6 +64,14 @@ namespace JRamedia.Controllers
             return View(Tuple.Create(obj, categories));
         }
 
+        [HttpGet]
+        public IActionResult DetailBook(int id)
+        {
+
+            var book = _db.Books.Find(id);
+            return View("Detail", book);
+        }
+
         public IActionResult Update(int? id)
         {
             IEnumerable<Category> categories = _db.Categories;
