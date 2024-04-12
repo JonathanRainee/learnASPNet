@@ -285,13 +285,28 @@ a {
 }
 
 .img-box {
-    width: 300px; /* Adjust width as needed */
-    height: 440px; /* Adjust height as needed */
+    width: 250px; /* Adjust width as needed */
+    height: 365px; /* Adjust height as needed */
     padding: 15px; /* Add padding to create space for shadow */
     box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* Spread shadow from div border */
     -webkit-box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* For older versions of webkit browsers */
     -moz-box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* For older versions of Firefox */
 }
 
+.bar-dtl {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Distribute items equally */
+    align-items: center; /* Align items vertically */
+}
+
+.a-dtl{
+    margin-right:25px;
+}
+
+.desc-dtl {
+    max-width: 90%;
+    text-align: justify;
+}
 
 /*details start*/

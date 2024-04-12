@@ -7,7 +7,7 @@
 
 @Html.Partial("~/Views/Shared/_Navbar.cshtml")
 
-<div class="container p-3">
+<div class="container p-5">
 
     <div class="row pt-5">
         @* image *@
@@ -31,11 +31,11 @@
             <div class="title-dtl">
                 <h4>@Model.Title</h4>
             </div>
-            <div class="bar-dtl row">
-                <a href="#">Choose Book Format</a>
-                <a href="#">Book's Description</a>
-                <a href="#">Book's Detail'</a>
-            </div>
+            <nav class="flex column  pb-3">
+                <a class="pr-4 a-dtl" href="#">Choose Book Format</a>
+                <a class="pr-4 a-dtl" href="#">Book's Description</a>
+                <a class="pr-4 a-dtl" href="#">Book's Detail</a>
+            </nav>
             <div class="format-dtl">
                 <p>Choose Provided Book's Format</p>
             </div>
