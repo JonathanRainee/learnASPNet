@@ -134,6 +134,8 @@ a {
 
 /*navbar*/
 .nb {
+    min-height: 75px;
+
     background-color: var(--white);
 }
 
@@ -288,7 +290,7 @@ a {
     width: 250px; /* Adjust width as needed */
     height: 365px; /* Adjust height as needed */
     padding: 15px; /* Add padding to create space for shadow */
-    box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* Spread shadow from div border */
+    box-shadow: 0 0 44px 1px rgba(0, 0, 0, 0.2); /* Spread shadow from div border */
     -webkit-box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* For older versions of webkit browsers */
     -moz-box-shadow: 0 0 24px 14px rgba(0, 0, 0, 0.2); /* For older versions of Firefox */
 }
@@ -307,6 +309,16 @@ a {
 .desc-dtl {
     max-width: 90%;
     text-align: justify;
+}
+
+.li-dtl {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.li-item{
+    display: flex;
 }
 
 /*details start*/
