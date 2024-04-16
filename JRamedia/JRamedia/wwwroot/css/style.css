@@ -321,4 +321,20 @@ a {
     display: flex;
 }
 
+.format-dtl-item{
+    min-width: 180px;
+    max-width: 180px;
+}
+
+.format-btn-dtl-inner {
+    justify-content: flex-start; /* Align content to the start */
+    text-align: start;
+}
+
+.format-btn-dtl {
+    min-width: 100%;
+    max-width: 100%;
+    text-align: start;
+}
+
 /*details start*/

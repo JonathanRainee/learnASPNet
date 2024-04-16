@@ -36,8 +36,22 @@
                 <a class="pr-4 a-dtl" href="#">Book's Description</a>
                 <a class="pr-4 a-dtl" href="#">Book's Detail</a>
             </nav>
-            <div class="format-dtl">
+            <div class="format-dtl pb-4">
                 <p>Choose Provided Book's Format</p>
+                <div class="row">
+
+                    <div class="format-dtl-item ">
+                        <button class="format-btn-dtl rounded-lg">
+                            <div class="format-btn-dtl-inner">
+                                <p>SOFT COVER</p>
+                                <span>Start From</span>
+                                <h3>Rp. @Model.Price</h3>
+                                <p>Rp. @(Model.Price+10000)</p>
+                            </div>
+                        </button>
+                    </div>
+                    
+                </div>
             </div>
             <div class="desc-dtl">
                 @Model.Description
