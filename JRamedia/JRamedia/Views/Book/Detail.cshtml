@@ -32,11 +32,11 @@
                 <h4>@Model.Title</h4>
             </div>
             <nav class="flex column  pb-3">
-                <a class="pr-4 a-dtl" href="#">Choose Book Format</a>
-                <a class="pr-4 a-dtl" href="#">Book's Description</a>
-                <a class="pr-4 a-dtl" href="#">Book's Detail</a>
+                <a class="pr-4 a-dtl" href="#bookFormat">Choose Book Format</a>
+                <a class="pr-4 a-dtl" href="#bookDesc">Book's Description</a>
+                <a class="pr-4 a-dtl" href="#bookDetail">Book's Detail</a>
             </nav>
-            <div class="format-dtl pb-4">
+            <div class="format-dtl pb-4" id="bookFormat">
                 <p>Choose Provided Book's Format</p>
                 <div class="row">
 
@@ -53,10 +53,10 @@
                     
                 </div>
             </div>
-            <div class="desc-dtl">
+            <div class="desc-dtl" id="bookDesc">
                 @Model.Description
             </div>
-            <div class="detail-dtl pt-3">
+            <div class="detail-dtl pt-3" id="bookDetail">
                 <h5>Detail</h5>
                 <ul class="li-dtl">
                     <li class="li-item row">
