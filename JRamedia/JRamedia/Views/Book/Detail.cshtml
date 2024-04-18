@@ -44,9 +44,9 @@
                         <button class="format-btn-dtl rounded-lg">
                             <div class="format-btn-dtl-inner rounded-lg ">
                                 <p>SOFT COVER</p>
-                                <span>Start From</span>
-                                <h3>Rp. @Model.Price</h3>
-                                <p class="text-decoration-line-through">Rp. @(Model.Price + 10000)</p>
+                                <p>Start From</p>
+                                <h4>Rp. @Model.Price</h4>
+                                <p class="text-decoration-line-through fst-italic text-secondary">Rp. @(Model.Price + 10000)</p>
                             </div>
                         </button>
                     </div>
@@ -61,49 +61,35 @@
                 <ul class="li-dtl">
                     <li class="li-item row">
                         <span class="col">Number of Pages
-                            <p>200</p>
+                            <p>@Model.Pages</p>
                         </span>
-                        
                         <span class="col">Publisher
-                            <p>JRamedia</p>
+                            <p>@Model.Publisher</p>
                         </span>
-                       
                     </li>
                     <li class="li-item row">
-                        <span class="col">
-                            Publish Date
-                            <p>18 Jan 2022</p>
+                        <span class="col">Publish Date
+                            <p>@Model.PublishDate</p>
                         </span>
-                        
-                        <span class="col">
-                            Weight
-                            <p>0.1 kg</p>
+                        <span class="col">Weight
+                            <p>@Model.Weight kg</p>
                         </span>
-                        
                     </li>
                     <li class="li-item row">
-                        <span class="col">
-                            ISBN
-                            <p>9786230029783</p>
+                        <span class="col">Serial Number
+                            <p>@Model.SerialNumber</p>
                         </span>
-                        
-                        <span class="col">
-                            Width
-                            <p>12.0 cm</p>
+                        <span class="col">Width
+                            <p>@Model.Width cm</p>
                         </span>
-                        
                     </li>
                     <li class="li-item row">
-                        <span class="col">
-                            Language
-                            <p>English</p>
+                        <span class="col">Language
+                            <p>@Model.Langugae</p>
                         </span>
-
-                            <span class="col">
-                                Length
-                            <p>18.0 cm</p>
+                        <span class="col">Length
+                            <p>@Model.Length cm</p>
                         </span>
-                        
                     </li>
                 </ul>
             </div>
