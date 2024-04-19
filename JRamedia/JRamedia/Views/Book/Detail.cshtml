@@ -21,8 +21,13 @@
         @* text *@
         <div class="col-6 mt-3">
             <div>
-                <div class="author-dtl">
+                <div class="author-dtl d-flex justify-content-between">
                     <h4>@Model.Author</h4>
+                    <div>
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <a asp-controller="Book" asp-action="Update" asp-route-id="@Model.Id" class="btn-prim p-2 rounded">Update</a>
+                        <a asp-controller="Book" asp-action="Delete" asp-route-id="@Model.Id" class="btn-lo p-2 rounded">Delete</a>
+                    </div>
                 </div>
                 <div class="share-btn">
                 

@@ -145,6 +145,7 @@ a {
 }
 
 .btn-lo {
+    color: var(--white);
     background-color: var(--red);
     transition: background-color 0.3s ease-in-out;
 }
