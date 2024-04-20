@@ -25,6 +25,8 @@ namespace JRamedia.Controllers
         }
         public IActionResult Index()
         {
+           
+
             IEnumerable<Books> books = _db.Books;
             return View(books);
         }

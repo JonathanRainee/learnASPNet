@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model IEnumerable<Books>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -250,7 +250,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col pb-4">
+                    @foreach (var obj in Model)
+                    {
+                        @Html.Partial("~/Views/Shared/_Book.cshtml", obj)
+                    }
+                   @*  <div class="col pb-4">
                         <div   class="d-flex shadow prod-otr-ctr prod-card ">
                             <a href="#"   class="text-decoration-none prod-inr-ctr">
                                 <div class="rounded-end prod-dsc-prctg" >20%</div>
@@ -393,7 +397,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div> *@
                 </div>
             </div>
         </div>

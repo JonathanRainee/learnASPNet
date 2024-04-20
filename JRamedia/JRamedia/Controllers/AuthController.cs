@@ -21,7 +21,6 @@ namespace JRamedia.Controllers
         {
             _db = db;
         }
-        //GET: Auth/Login
 
         public IActionResult Login()
         {

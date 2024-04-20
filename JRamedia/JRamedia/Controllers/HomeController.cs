@@ -5,6 +5,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using JRamedia.Data;
 
 namespace JRamedia.Controllers
 {
@@ -12,15 +13,19 @@ namespace JRamedia.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDBContext _db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDBContext db)
         {
             _logger = logger;
+            _db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Books> Favoritebooks = _db.Books.Where(book => book.BoughtTimes > 10).Take(6);
+            //Tuple.Create(obj, categories)
+            return View(Favoritebooks);
         }
 
         public IActionResult Privacy()
