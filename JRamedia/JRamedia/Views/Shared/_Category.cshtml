@@ -6,7 +6,7 @@
 
 @model Category
 
-<a href="#" class="">
+<a class="" asp-controller="Category" asp-action="Edit" asp-route-id="@Model.Id">
     <div class="border rounded p-3 category mb-4">
         <div>
             <h3 style="color:white">@Model.Name</h3>

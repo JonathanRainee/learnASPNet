@@ -2,38 +2,92 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
-<form method="post">
-    <input asp-for="Id" hidden/>
-    <div class="border p-3 m-4">
-        <div class="row pb-2">
-            <h2 class="text-primary">Delete Book</h2>
-            <hr />
-        </div>
-        <div class="mb-3">
-            <label asp-for="Title">Title</label>
-            <input asp-for="Title" disabled class="form-control"/>
-        </div>
-        <div class="mb-3">
-            <label>Genre</label>
-            <input disabled class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label asp-for="Description">Description</label>
-            <input asp-for="Description" disabled class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label asp-for="Author">Author</label>
-            <input asp-for="Author" disabled class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label asp-for="Price">Price</label>
-            <input asp-for="Price" disabled class="form-control" />
-        </div>
-        <button class="btn btn-danger" asp-controller="Book" asp-action="DeleteBook">Delete</button>
-        <a class="btn btn-secondary" asp-controller="Book" asp-action="Index" style="width:150px">Back</a>
+@Html.Partial("~/Views/Shared/_Navbar.cshtml")
+<div class="container pb-4">
+    <div class="row pt-4">
+        <h2 class="text-primary pt-4">Delete Book</h2>
+        <hr />
     </div>
-</form>
+    <form method="post" class="pb-4">
+        <div asp-validation-summary="All"></div>
+        <input asp-for="Id" hidden/>
+        <div class="row">
+            <div class="mt-2 col-6 pr-4">
+                <div class="mb-3">
+                    <label asp-for="Title">Title</label>
+                    <input asp-for="Title" class="form-control tb" readonly />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Genre">Genre</label>
+                    <input asp-for="Genre" class="form-control tb" readonly />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Description">Description</label>
+                    <input asp-for="Description" readonly class="form-control tb" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Author">Author</label>
+                    <input asp-for="Author" readonly class="form-control tb" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Price">Price</label>
+                    <input asp-for="Price" readonly class="form-control tb" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Image">Image</label>
+                    <input asp-for="Image" type="file" name="Image" id="file" value="@Model.Image" class="form-control tb inp-file" />
+                    <span asp-validation-for="Image" id="vld-image" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="BoughtTimes">Bought Times</label>
+                    <input asp-for="BoughtTimes" type="number" name="BoughtTimes" value="@Model.BoughtTimes" class="form-control tb" />
+                    <span asp-validation-for="BoughtTimes" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mt-2 col-6 pr-4">
+                <div class="mb-3">
+                    <label asp-for="Pages">Pages</label>
+                    <input asp-for="Pages" type="number" name="Pages" value="@Model.Pages" class="form-control tb" />
+                    <span asp-validation-for="Pages" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Publisher">Publisher</label>
+                    <input asp-for="Publisher" type="datetime" name="Publisher" value="@Model.Publisher" class="form-control tb" />
+                    <span asp-validation-for="Publisher" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Weight">Weight</label>
+                    <input asp-for="Weight" type="number" name="Weight" value="@Model.Weight" class="form-control tb" />
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="SerialNumber">Serial Number</label>
+                    <input asp-for="SerialNumber" type="number" name="SerialNumber" value="@Model.SerialNumber" class="form-control tb" />
+                    <span asp-validation-for="SerialNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Width">Width</label>
+                    <input asp-for="Width" type="number" name="Width" value="@Model.Width" class="form-control tb" />
+                    <span asp-validation-for="Width" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Length">Length</label>
+                    <input asp-for="Length" type="number" name="Length" value="@Model.Length" class="form-control tb" />
+                    <span asp-validation-for="Length" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Langugae">Language</label>
+                    <input asp-for="Langugae" type="text" name="Langugae" value="@Model.Langugae" class="form-control tb" />
+                    <span asp-validation-for="Langugae" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-lo btn-100" asp-controller="Book" asp-action="DeleteBook">Delete</button>
+                <a class="btn btn-prim btn-130" asp-controller="Book" asp-action="Index" style="width:150px">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     @{

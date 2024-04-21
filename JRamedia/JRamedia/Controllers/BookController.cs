@@ -97,7 +97,7 @@ namespace JRamedia.Controllers
                 ModelState.AddModelError("Title", "Title length can't be less than 5 characters");
             }
             if(ModelState.IsValid) {
-                if (Image != null && Image.Length > 0)
+                if (Image != null)
                 {
                     var imagePath = Path.Combine(_environment.WebRootPath, "images", Image.FileName);
                     using (var stream = new FileStream(imagePath, FileMode.Create))
@@ -116,6 +116,7 @@ namespace JRamedia.Controllers
 
         public IActionResult Delete(int? id)
         {
+
             if(id == null || id == 0)
             {
                 return NotFound();
