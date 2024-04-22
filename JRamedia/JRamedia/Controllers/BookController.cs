@@ -9,6 +9,7 @@ using static System.Collections.Specialized.BitVector32;
 using Microsoft.AspNetCore.Hosting;
 using System;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace JRamedia.Controllers
 {
@@ -74,7 +75,7 @@ namespace JRamedia.Controllers
             return View("Detail", book);
         }
 
-        public IActionResult Update(int? id)
+        public IActionResult UpdateBook(int? id)
         {
             IEnumerable<Category> categories = _db.Categories;
             if (id == null || id == 0)
@@ -97,7 +98,7 @@ namespace JRamedia.Controllers
                 ModelState.AddModelError("Title", "Title length can't be less than 5 characters");
             }
             if(ModelState.IsValid) {
-                if (Image != null)
+                if (Image != null && Image.Length > 0)
                 {
                     var imagePath = Path.Combine(_environment.WebRootPath, "images", Image.FileName);
                     using (var stream = new FileStream(imagePath, FileMode.Create))
@@ -106,12 +107,35 @@ namespace JRamedia.Controllers
                     }
                     book.Image = Image.FileName;
                 }
-                _db.Books.Update(book);
-                _db.SaveChanges();
-                TempData["success"] = "Book updated successfully";
-                return RedirectToAction("Index");
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("masuk else");
+                    var existingBook = _db.Books.Find(book.Id);
+                    if (existingBook != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine("id bro " + existingBook.Id);
+                        book.Image = existingBook.Image;
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("masuk else 2");
+                    }
+                }
+                //_db.Entry(book).State = EntityState.Detached;
+                //_db.Books.Update(book);
+                //_db.SaveChanges();
+                //TempData["success"] = "Book updated successfully";
+                //return RedirectToAction("Index");
+                var bookUpdate = _db.Books.Find(book.Id);
+                if (bookUpdate != null)
+                {
+                    _db.Entry(bookUpdate).CurrentValues.SetValues(book);
+                    _db.SaveChanges();
+                    TempData["success"] = "Book updated successfully";
+                    return RedirectToAction("Index");
+                }
             }
-            return View(book);
+            return View(Tuple.Create(book, categories));
         }
 
         public IActionResult Delete(int? id)

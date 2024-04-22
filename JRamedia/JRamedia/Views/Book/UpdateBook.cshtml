@@ -12,12 +12,13 @@
     </div>
     <form method="post" class="pb-4" enctype="multipart/form-data" asp-action="UpdateBook">
         <input type="hidden" name="Id" value="@Model.Item1.Id" />
+        <div asp-validation-summary="All"></div>
         <div class="row">
-            <div asp-validation-summary="All"></div>
             <div class="mt-2 col-6 pr-4">
                 <div class="mb-3">
                     <label asp-for="Item1.Title">Title</label>
                     <input asp-for="Item1.Title" type="text" name="Title" value="@Model.Item1.Title" class="form-control tb" />
+                    <input asp-for="Item1.Title" type="hidden" name="Title" value="@Model.Item1.Image" class="form-control tb" />
                     <span asp-validation-for="Item1.Title" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
@@ -48,7 +49,6 @@
                 <div class="mb-3">
                     <label asp-for="Item1.Image">Image</label>
                     <input asp-for="Item1.Image" type="file" name="Image" id="file" value="@Model.Item1.Image" class="form-control tb inp-file" />
-                    <span asp-validation-for="Item1.Image" id="vld-image" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Item1.BoughtTimes">Bought Times</label>

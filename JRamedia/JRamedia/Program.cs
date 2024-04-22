@@ -28,6 +28,9 @@ builder.Services.ConfigureApplicationCookie(opt =>
     opt.ExpireTimeSpan = TimeSpan.FromSeconds(10);
     opt.SlidingExpiration = true;
 });
+builder.Services.AddControllers(
+ options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
+
 
 var app = builder.Build();
 

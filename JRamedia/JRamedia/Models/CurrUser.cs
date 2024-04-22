@@ -5,7 +5,7 @@
         public static int Id;
         public static string Username;
         public static string Email;
-        public static string Role;
+        public static string Role = "admin";
 
         public static void setUser(int id, string username, string email, string role)
         {
