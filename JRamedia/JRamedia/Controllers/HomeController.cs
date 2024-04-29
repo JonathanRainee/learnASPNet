@@ -24,8 +24,9 @@ namespace JRamedia.Controllers
         public IActionResult Index()
         {
             IEnumerable<Books> Favoritebooks = _db.Books.Where(book => book.BoughtTimes > 10).Take(6);
-            //Tuple.Create(obj, categories)
-            return View(Favoritebooks);
+            IEnumerable<Books> RecomendationBooks = _db.Books.Where(book => book.BoughtTimes > 5).OrderBy(x => Guid.NewGuid()).Take(6);
+           
+            return View(Tuple.Create(Favoritebooks, RecomendationBooks));
         }
 
         public IActionResult Privacy()

@@ -43,6 +43,11 @@ a {
 
 /*button start*/
 
+.btn-small{
+    width: 10px;
+    height: 10px;
+}
+
 .btn-130{
     width: 130px;
 }
